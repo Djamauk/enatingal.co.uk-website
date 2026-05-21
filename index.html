@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enatingal Ltd | Premium Goods Portfolio</title>
+    <style>
+        /* Modern Minimalist Reset & Variables */
+        :root {
+            --primary-coral: #E63946;
+            --dark-charcoal: #1D3557;
+            --light-bg: #F8F9FA;
+            --pure-white: #FFFFFF;
+            --text-dark: #2B2D42;
+            --text-muted: #6C757D;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Navigation Header */
+        header {
+            background: var(--pure-white);
+            border-bottom: 1px solid #E5E5E5;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .logo a {
+            font-weight: 700;
+            font-size: 22px;
+            color: var(--text-dark);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.2s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-coral);
+        }
+
+        .cta-btn {
+            background-color: var(--primary-coral);
+            color: var(--pure-white);
+            padding: 10px 22px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: background 0.2s ease;
+        }
+
+        .cta-btn:hover {
+            background-color: #D62837;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.5)), url('assets/images/coarse-salt-label.jpg') no-repeat center center/cover;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--pure-white);
+            padding: 20px;
+        }
+
+        .hero-content max-width {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 25px;
+            opacity: 0.95;
+        }
+
+        /* Global Sections Layout */
+        section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        /* About & Story Layout split split */
+        .story-block {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            background: var(--pure-white);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        .story-text h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .story-text p {
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+
+        .story-img img {
+            width: 100%;
+            border-radius: 6px;
+            display: block;
+        }
+
+        /* Product Showcase Layout */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: var(--pure-white);
+            border: 1px solid #E5E5E5;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .product-img-wrapper {
+            background: #FAFAFA;
+            padding: 20px;
+            text-align: center;
+            height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-img-wrapper img {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        .product-info {
+            padding: 25px;
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .product-desc {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .marketplace-btn {
+            display: inline-block;
+            background: var(--dark-charcoal);
+            color: var(--pure-white);
+            padding: 12px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: opacity 0.2s ease;
+        }
+
+        .marketplace-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* Author and KDP Profile Section Layout */
+        .author-section {
+            background: #111A24;
+            color: var(--pure-white);
+            border-radius: 8px;
+            padding: 50px;
+            margin-top: 40px;
+        }
+
+        .author-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .author-grid img {
+            width: 100%;
+            border-radius: 4px;
+            box-shadow: 0 12px 24px rgba(0,0,0,0.3);
+        }
+
+        .author-text h3 {
+            font-size: 28px;
+            margin-bottom: 5px;
+            color: #F4A261;
+        }
+
+        .author-subtitle {
+            font-size: 14px;
+            color: #A8DADC;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .author-text p {
+            color: #E0E1DD;
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+
+        /* Contact Details Grid Layout */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            background: var(--pure-white);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        .contact-info h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .contact-details-list {
+            list-style: none;
+        }
+
+        .contact-details-list li {
+            margin-bottom: 12px;
+            font-size: 15px;
+        }
+
+        .contact-details-list strong {
+            display: inline-block;
+            width: 90px;
+            color: var(--text-muted);
+        }
+
+        /* Footer Copyright Block Layout */
+        footer {
+            background: #111111;
+            color: #888888;
+            padding: 40px 20px;
+            text-align: center;
+            font-size: 14px;
+            border-top: 1px solid #222222;
+            margin-top: 80px;
+        }
+
+        footer a {
+            color: #BBBBBB;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            color: var(--pure-white);
+        }
+
+        @media (max-width: 768px) {
+            .story-block, .author-grid, .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .hero h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <a href="#">Enatingal Ltd</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#story">Our Story</a></li>
+                    <li><a href="#products">Salt Range</a></li>
+                    <li><a href="#books">Publications</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <a href="https://www.amazon.co.uk/Himalayan-Pink-Salt-Fine-Essential/dp/B0F9LJPX19" target="_blank" class="cta-btn">Shop on Amazon</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="hero">
+            <div class="hero-content">
+                <h1>Pure Himalayan Salt & Insightful Publications</h1>
+                <p>Bringing natural minerals and innovative research straight from our London hub to global marketplaces.</p>
+                <a href="#products" class="cta-btn" style="background: var(--dark-charcoal);">Explore Our Portfolio</a>
+            </div>
+        </div>
+
+        <section id="story">
+            <h2 class="section-title">Our Story: Quality & Exploration</h2>
+            <div class="story-block">
+                <div class="story-text">
+                    <h3>From the Peak of Mountains to the Innovation Horizon</h3>
+                    <p>At Enatingal Ltd, our operations encompass two core paths: provisioning raw, mineral-rich Himalayan pink salt varieties for nutritional applications, and driving academic research into technical engineering frontiers.</p>
+                    <p>Headquartered right here in London, UK, we verify every single distribution channel to guarantee that what lands on your table, feed range, or desk complies with premium benchmarks.</p>
+                </div>
+                <div class="story-img">
+                    <img src="assets/images/coarse-salt-spon.jpg" alt="Natural Himalayan Salt Crystals Distribution Showcase">
+                </div>
+            </div>
+        </section>
+
+        <section id="products" style="background-color: #F1F5F9; max-width: 100%;">
+            <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+                <h2 class="section-title">The Premium Salt Collection</h2>
+                <div class="product-grid">
+                    
+                    <div class="product-card">
+                        <div class="product-img-wrapper">
+                            <img src="assets/images/fine-salt.jpg" alt="Himalayan Pink Salt Fine 1.3 KG Bag">
+                        </div>
+                        <div class="product-info">
+                            <div>
+                                <h3 class="product-title">Himalayan Pink Salt — Fine (1.3 KG)</h3>
+                                <p class="product-desc">Perfect for everyday kitchen prep work. Grinds cleanly and blends smoothly for consistent seasoning profiles.</p>
+                            </div>
+                            <a href="https://www.amazon.co.uk/Himalayan-Pink-Salt-Fine-Essential/dp/B0F9LJPX19" target="_blank" class="marketplace-btn">Buy on Amazon UK</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-img-wrapper">
+                            <img src="assets/images/coarse-salt.jpg" alt="Himalayan Pink Salt Coarse 1.3 KG Bag">
+                        </div>
+                        <div class="product-info">
+                            <div>
+                                <h3 class="product-title">Himalayan Pink Salt — Coarse (1.3 KG)</h3>
+                                <p class="product-desc">Excellent structural texture ideal for finishing coarse salt wells, dry seasoning rubs, or premium home spa use.</p>
+                            </div>
+                            <a href="https://www.amazon.co.uk/Himalayan-Pink-Salt-Fine-Essential/dp/B0F9LJPX19" target="_blank" class="marketplace-btn">Buy on Amazon UK</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-img-wrapper">
+                            <img src="assets/images/animal-lick.png" alt="Compressed 100% Pink Himalayan Animal Lick Block 4.2 KG">
+                        </div>
+                        <div class="product-info">
+                            <div>
+                                <h3 class="product-title">Compressed Animal Lick Block (4.2 KG)</h3>
+                                <p class="product-desc">100% weather-resistant blocks formulated to increase critical mineral consumption metrics in horses and livestock herds safely.</p>
+                            </div>
+                            <a href="https://www.amazon.co.uk/Himalayan-Pink-Animals-Compressed-Block/dp/B0DF86JBQH" target="_blank" class="marketplace-btn">Buy on Amazon UK</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="books">
+            <h2 class="section-title">Author Profile & Publications</h2>
+            <div class="author-section">
+                <div class="author-grid">
+                    <div class="author-cover-art">
+                        <img src="assets/images/mind-hive-cover.jpg" alt="The Mind Hive Full KDP Book Cover Presentation">
+                    </div>
+                    <div class="author-text">
+                        <h3>Said Dirie</h3>
+                        <div class="author-subtitle">Featured AI & Technology Release</div>
+                        <p><strong>The Mind Hive: Inside the Scary Future of Artificial Intelligence</strong> maps out modern infrastructural cognitive dynamics with precision engineering analysis.</p>
+                        <p>Diving extensively into deep agent networks, Model Context Protocol configurations, data moats, and security governance frameworks, it answers what true coordination models mean for scaling global institutions safely.</p>
+                        <a href="https://www.amazon.co.uk" target="_blank" class="cta-btn" style="background-color: #F4A261; color: #111A24;">Find on Amazon KDP</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2 class="section-title">Get in Touch</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Enatingal Ltd</h3>
+                    <p style="color: var(--text-muted);">Please route operational delivery requests, verification audits, or wholesale bulk procurement tasks directly via the official coordinates.</p>
+                </div>
+                <div>
+                    <ul class="contact-details-list">
+                        <li><strong>Location:</strong> Rosefield Garden, E14 8ER, London, United Kingdom</li>
+                        <li><strong>Email:</strong> <a href="mailto:info@enatingal.co.uk" style="color: var(--primary-coral); text-decoration: none;">info@enatingal.co.uk</a></li>
+                        <li><strong>Store Hub:</strong> <a href="https://www.ebay.co.uk/str/enatingalltd" target="_blank" style="color: var(--text-dark); text-decoration: underline;">Visit Crestiva Shop on eBay</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Enatingal Ltd. All rights reserved. Registered Office: London, UK.</p>
+        <p style="margin-top: 10px; font-size: 12px;">
+            <a href="https://www.amazon.co.uk/str/enatingalltd" target="_blank">Amazon Storefront</a> | 
+            <a href="https://www.ebay.co.uk/str/enatingalltd" target="_blank">eBay Crestiva Shop</a>
+        </p>
+    </footer>
+
+</body>
+</html>
